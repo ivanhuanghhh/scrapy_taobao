@@ -15,7 +15,7 @@ SPIDER_MODULES = ['scrapytaobao.spiders']
 NEWSPIDER_MODULE = 'scrapytaobao.spiders'
 
 KEYWORDS = ['魅族']
-MAX_PAGE = 100
+MAX_PAGE = 2
 
 SELENIUM_TIMEOUT = 10
 

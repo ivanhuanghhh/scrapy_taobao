@@ -18,16 +18,20 @@ class SeleniumMiddleware():
     def __init__(self, timeout=None, service_args=[]):
         self.logger = getLogger(__name__)
         self.timeout = timeout
-        self.browser = webdriver.PhantomJS(service_args=service_args)
+        # self.browser = webdriver.PhantomJS(service_args=service_args)
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.add_argument('--headless')
+        self.browser = webdriver.Chrome(chrome_options=chrome_options)
         self.browser.set_window_size(1400, 700)
         self.browser.set_page_load_timeout(self.timeout)
+
         self.wait = WebDriverWait(self.browser, self.timeout)
 
     def __del__(self):
         self.browser.close()
 
     def process_request(self, request, spider):
-        self.logger.debug('PhantomJS is Starting')
+        self.logger.debug('Selenium is Starting')
         page = request.meta.get('page', 1)
         try:
             self.browser.get(request.url)

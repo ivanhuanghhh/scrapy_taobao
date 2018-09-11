@@ -15,7 +15,7 @@ SPIDER_MODULES = ['scrapytaobao.spiders']
 NEWSPIDER_MODULE = 'scrapytaobao.spiders'
 
 KEYWORDS = ['魅族']
-MAX_PAGE = 2
+MAX_PAGE = 100
 
 SELENIUM_TIMEOUT = 10
 
@@ -72,9 +72,10 @@ DOWNLOADER_MIDDLEWARES = {
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'scrapytaobao.pipelines.scrapytaobaoPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'scrapytaobao.pipelines.DupProductPipeline': 300,
+   'scrapytaobao.pipelines.MongoPipeline': 301,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html

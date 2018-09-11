@@ -31,15 +31,15 @@ class SeleniumMiddleware():
         page = request.meta.get('page', 1)
         try:
             self.browser.get(request.url)
-            if page > 1:
-                input = self.wait.until(
-                    EC.presence_of_element_located((By.CSS_SELECTOR, '#mainsrp-pager div.form > input')))
-                submit = self.wait.until(
-                    EC.element_to_be_clickable((By.CSS_SELECTOR, '#mainsrp-pager div.form > .J_Submit')))
+            # if page > 1:
+            #     input = self.wait.until(
+            #         EC.presence_of_element_located((By.CSS_SELECTOR, '#mainsrp-pager div.form > input')))
+            #     submit = self.wait.until(
+            #         EC.element_to_be_clickable((By.CSS_SELECTOR, '#mainsrp-pager div.form > .J_Submit')))
 
-                input.clear()
-                input.send_keys(page)
-                submit.click()
+            #     input.clear()
+            #     input.send_keys(page)
+            #     submit.click()
 
             self.wait.until(
                 EC.text_to_be_present_in_element(
